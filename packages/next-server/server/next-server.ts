@@ -313,6 +313,7 @@ export default class Server {
     const dynamicRoutedPages = Object.keys(manifest.pages).filter(p =>
       p.includes('/$')
     )
+    console.log(dynamicRoutedPages);
     return getSortedRoutes(dynamicRoutedPages).map(page => ({
       page,
       match: getRouteMatcher(getRouteRegex(page)),
