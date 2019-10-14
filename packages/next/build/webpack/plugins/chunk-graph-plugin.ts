@@ -1,7 +1,7 @@
-import { CLIENT_STATIC_FILES_RUNTIME_MAIN } from '../../../next-server/lib/constants'
 import path from 'path'
 import { parse } from 'querystring'
 import { Compiler, Plugin } from 'webpack'
+import { CLIENT_STATIC_FILES_RUNTIME_MAIN } from '../../../next-server/lib/constants'
 
 type StringDictionary = { [pageName: string]: string[] }
 const manifest: {
@@ -34,6 +34,7 @@ export function getPageChunks(
   const internal = new Set<string>() // from project
   ;[...(manifest.pages[page] || []), ...(pageModules[page] || [])].map(mod => {
     mod = mod.replace(/\\/g, '/')
+    console.log(mod);
 
     if (mod.match(/(next-server|next)\//)) {
       return null
